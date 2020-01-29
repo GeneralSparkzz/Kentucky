@@ -1,0 +1,1 @@
+I tried to make this code as modular as possible and as it turns out I only had to add a 2 at the end of the first test's variable names and it worked perfectly for both. This is why the code is the exact same. However, it shows the problem regardless. :P

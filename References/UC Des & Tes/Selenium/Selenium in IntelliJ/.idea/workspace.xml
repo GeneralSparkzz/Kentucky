@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e26244a2-4a35-4ab2-af04-fb3a935347b9" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Arquillian JUnit Test Class" />
+        <option value="JUnit4 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1U9n17XVGZo322ZHf036uaE1gUq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="true" />
+    <property name="Repository.Attach.JavaDocs" value="true" />
+    <property name="Repository.Attach.Sources" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
+    <property name="findjar.last.used.dir" value="$PROJECT_DIR$/../IntelliJ Selenium/libs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.JUnitTestsTest.phptravelsFourthPage">
+    <configuration name="All in Selenium in IntelliJ" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Selenium in IntelliJ" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JUnitTestsTest.phptravelsFirstPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Selenium in IntelliJ" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JUnitTestsTest" />
+      <option name="METHOD_NAME" value="phptravelsFirstPage" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JUnitTestsTest.phptravelsFourthPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Selenium in IntelliJ" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JUnitTestsTest" />
+      <option name="METHOD_NAME" value="phptravelsFourthPage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JUnitTestsTest.phptravelsSecondPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Selenium in IntelliJ" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JUnitTestsTest" />
+      <option name="METHOD_NAME" value="phptravelsSecondPage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JUnitTestsTest.phptravelsThirdPage" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Selenium in IntelliJ" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JUnitTestsTest" />
+      <option name="METHOD_NAME" value="phptravelsThirdPage" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JUnitTestsTest.test1" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="Selenium in IntelliJ" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JUnitTestsTest" />
+      <option name="METHOD_NAME" value="test1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests" type="JUnit" factoryName="JUnit">
+      <module name="Selenium in IntelliJ" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="JUnitTestsTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.Tests" />
+      <item itemvalue="JUnit.JUnitTestsTest.test1" />
+      <item itemvalue="JUnit.All in Selenium in IntelliJ" />
+      <item itemvalue="JUnit.JUnitTestsTest.phptravelsFirstPage" />
+      <item itemvalue="JUnit.JUnitTestsTest.phptravelsSecondPage" />
+      <item itemvalue="JUnit.JUnitTestsTest.phptravelsThirdPage" />
+      <item itemvalue="JUnit.JUnitTestsTest.phptravelsFourthPage" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.JUnitTestsTest.phptravelsFourthPage" />
+        <item itemvalue="JUnit.JUnitTestsTest.phptravelsThirdPage" />
+        <item itemvalue="JUnit.JUnitTestsTest.phptravelsSecondPage" />
+        <item itemvalue="JUnit.JUnitTestsTest.phptravelsFirstPage" />
+        <item itemvalue="JUnit.All in Selenium in IntelliJ" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e26244a2-4a35-4ab2-af04-fb3a935347b9" name="Default Changelist" comment="" />
+      <created>1574777460424</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574777460424</updated>
+      <workItem from="1574777461889" duration="930000" />
+      <workItem from="1574778615307" duration="9309000" />
+      <workItem from="1574798882805" duration="1065000" />
+      <workItem from="1574962889131" duration="67000" />
+      <workItem from="1574962983965" duration="53000" />
+      <workItem from="1575393671974" duration="62000" />
+      <workItem from="1575394008515" duration="85000" />
+      <workItem from="1575394115686" duration="178000" />
+      <workItem from="1575396822546" duration="3250000" />
+      <workItem from="1575465859072" duration="5540000" />
+      <workItem from="1575557434183" duration="105000" />
+      <workItem from="1575560390703" duration="6409000" />
+      <workItem from="1575567060431" duration="235000" />
+      <workItem from="1575570991942" duration="5727000" />
+      <workItem from="1575582805187" duration="1124000" />
+      <workItem from="1575652268829" duration="599000" />
+      <workItem from="1576163461807" duration="4562000" />
+      <workItem from="1576172703226" duration="9000" />
+      <workItem from="1576255044728" duration="9000" />
+      <workItem from="1576596594798" duration="128000" />
+      <workItem from="1576598572097" duration="69000" />
+      <workItem from="1576675298934" duration="38000" />
+      <workItem from="1576762475168" duration="94000" />
+      <workItem from="1576762617065" duration="11494000" />
+      <workItem from="1576775653285" duration="245000" />
+      <workItem from="1577971712437" duration="111000" />
+      <workItem from="1577972131260" duration="3054000" />
+      <workItem from="1577976319473" duration="1859000" />
+      <workItem from="1578071876527" duration="10020000" />
+      <workItem from="1578408403729" duration="1406000" />
+      <workItem from="1578965821159" duration="5184000" />
+      <workItem from="1579047860039" duration="23000" />
+      <workItem from="1579094652981" duration="4672000" />
+      <workItem from="1579181290881" duration="15613000" />
+      <workItem from="1579197823895" duration="134000" />
+      <workItem from="1579268088378" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="70" key="#Arquillian_Containers" timestamp="1575397789947">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="70" key="#Arquillian_Containers/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575397789947" />
+    <state x="552" y="194" key="#HTTP_Proxy" timestamp="1578072122811">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="194" key="#HTTP_Proxy/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578072122811" />
+    <state x="365" y="68" key="#JUnitTestsTest.Test1" timestamp="1575397934918">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="365" y="68" key="#JUnitTestsTest.Test1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575397934918" />
+    <state x="365" y="62" key="#JUnitTestsTest.test1" timestamp="1575399824847">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="365" y="62" key="#JUnitTestsTest.test1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575399824847" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575399759788">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575399759788" />
+    <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1575473168160">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="93" y="93" width="1350" height="638" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575473168160" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1579186235185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1579186235185" />
+    <state x="718" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578969032319" />
+    <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1575399756101">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="498" y="196" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575399756101" />
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575394060592">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="449" y="140" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575394060592" />
+    <state x="526" y="150" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1578409209603">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="526" y="150" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1578409209603" />
+    <state x="501" y="153" key="FileChooserDialogImpl" timestamp="1578409206786">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="501" y="153" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1578409206786" />
+    <state x="1101" y="219" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578072197942" />
+    <state width="1493" height="225" key="GridCell.Tab.0.bottom" timestamp="1579197506685">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="225" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1579197506685" />
+    <state width="1877" height="225" key="GridCell.Tab.0.bottom/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579197174131" />
+    <state width="1493" height="403" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1575579066995" />
+    <state width="1877" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state width="1493" height="225" key="GridCell.Tab.0.center" timestamp="1579197506685">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="225" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1579197506685" />
+    <state width="1877" height="225" key="GridCell.Tab.0.center/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579197174131" />
+    <state width="1493" height="403" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1575579066995" />
+    <state width="1877" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state width="1493" height="225" key="GridCell.Tab.0.left" timestamp="1579197506685">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="225" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1579197506685" />
+    <state width="1877" height="225" key="GridCell.Tab.0.left/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579197174131" />
+    <state width="1493" height="403" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1575579066995" />
+    <state width="1877" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state width="1493" height="225" key="GridCell.Tab.0.right" timestamp="1579197506685">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="225" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1579197506685" />
+    <state width="1877" height="225" key="GridCell.Tab.0.right/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1579197174131" />
+    <state width="1493" height="403" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1575579066995" />
+    <state width="1877" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1578113547563">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576774124656" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1578113547563">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576774124656" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1578113547563">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576774124656" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1578113547563">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576774124656" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578113547563" />
+    <state x="374" y="85" key="Maven.ArtifactSearchDialog" timestamp="1578072215411">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="299" y="67" key="Maven.ArtifactSearchDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575397020214" />
+    <state x="374" y="85" key="Maven.ArtifactSearchDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578072215411" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1578408485469">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1578408485469" />
+    <state x="346" y="0" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578072202847" />
+    <state x="526" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1575399974492">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="526" y="305" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575399974492" />
+    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1575398055253">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="540" y="115" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575398055253" />
+    <state x="499" y="167" key="extract.method.dialog" timestamp="1575399841246">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="extract.method.dialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1575399841246" />
+    <state x="209" y="32" key="new project wizard" timestamp="1576762569766">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="209" y="32" key="new project wizard/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1576762569766" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1579185219065">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1579185219065" />
+  </component>
+</project>

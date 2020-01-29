@@ -16,7 +16,7 @@ public class dataPullTesting {
 
     public static void main(String[] args) throws IOException {
         Start();
-        System.out.println("Developing Enterprise Applications - Kentucky Team");
+        System.out.println("Programming Enterprise Applications - Kentucky Team");
         // End();
     }
 

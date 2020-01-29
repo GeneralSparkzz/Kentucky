@@ -1,0 +1,15 @@
+IntelliJ Selenium Connecting Code
+
+Imports:
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+Main:
+System.setProperty("webdriver.chrome.driver",
+                "C:\\Users\\Coby\\Desktop\\UC Des & Tes\\Selenium\\IntelliJ Selenium\\chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get("https://walmart.com");
+        driver.quit();

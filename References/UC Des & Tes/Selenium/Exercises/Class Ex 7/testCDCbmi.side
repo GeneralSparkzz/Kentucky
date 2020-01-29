@@ -1,0 +1,156 @@
+{
+  "id": "faf30912-d052-4411-a2f7-32c36b9778f8",
+  "version": "2.0",
+  "name": "testCDCbmi",
+  "url": "https://www.cdc.gov",
+  "tests": [{
+    "id": "247979b1-96e0-44a9-b1d1-4451d8d89014",
+    "name": "overWeight",
+    "commands": [{
+      "id": "a097a6a1-81a9-4738-a5cc-349d9681c2ef",
+      "comment": "",
+      "command": "open",
+      "target": "/healthyweight/assessing/bmi/adult_bmi/english_bmi_calculator/bmi_calculator.html",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fdcac02a-be9b-4470-af92-b27fb0a26fa7",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1552x840",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "656d3e2a-20a5-4077-9fc4-e504024bd827",
+      "comment": "",
+      "command": "click",
+      "target": "id=feet",
+      "targets": [
+        ["id=feet", "id"],
+        ["name=feet", "name"],
+        ["css=#feet", "css:finder"],
+        ["xpath=//input[@id='feet']", "xpath:attributes"],
+        ["xpath=//div[@id='calc_form']/div/div/div[2]/div/div[2]/ul/li/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "37dfbbe2-f9b3-4b81-bb93-197d792dbf75",
+      "comment": "",
+      "command": "type",
+      "target": "id=feet",
+      "targets": [
+        ["id=feet", "id"],
+        ["name=feet", "name"],
+        ["css=#feet", "css:finder"],
+        ["xpath=//input[@id='feet']", "xpath:attributes"],
+        ["xpath=//div[@id='calc_form']/div/div/div[2]/div/div[2]/ul/li/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div/input", "xpath:position"]
+      ],
+      "value": "5"
+    }, {
+      "id": "ff34120e-6534-40ba-b757-47b49c9e1b5d",
+      "comment": "",
+      "command": "click",
+      "target": "id=inches",
+      "targets": [
+        ["id=inches", "id"],
+        ["name=inches", "name"],
+        ["css=#inches", "css:finder"],
+        ["xpath=//input[@id='inches']", "xpath:attributes"],
+        ["xpath=//div[@id='calc_form']/div/div/div[2]/div/div[2]/ul/li[2]/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//li[2]/div/div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6c08944f-96d8-40b2-98d0-17c669ffa169",
+      "comment": "",
+      "command": "type",
+      "target": "id=inches",
+      "targets": [
+        ["id=inches", "id"],
+        ["name=inches", "name"],
+        ["css=#inches", "css:finder"],
+        ["xpath=//input[@id='inches']", "xpath:attributes"],
+        ["xpath=//div[@id='calc_form']/div/div/div[2]/div/div[2]/ul/li[2]/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//li[2]/div/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "10"
+    }, {
+      "id": "4dc32aea-efdb-4a45-b541-69231ea36594",
+      "comment": "",
+      "command": "click",
+      "target": "id=pounds",
+      "targets": [
+        ["id=pounds", "id"],
+        ["name=pounds", "name"],
+        ["css=#pounds", "css:finder"],
+        ["xpath=//input[@id='pounds']", "xpath:attributes"],
+        ["xpath=//div[@id='calc_form']/div/div/div[2]/div[2]/div[2]/ul/li/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/ul/li/div/div[2]/div/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "8aa6104f-1800-411a-87ae-77475156be53",
+      "comment": "",
+      "command": "type",
+      "target": "id=pounds",
+      "targets": [
+        ["id=pounds", "id"],
+        ["name=pounds", "name"],
+        ["css=#pounds", "css:finder"],
+        ["xpath=//input[@id='pounds']", "xpath:attributes"],
+        ["xpath=//div[@id='calc_form']/div/div/div[2]/div[2]/div[2]/ul/li/div/div[2]/div/input", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/ul/li/div/div[2]/div/input", "xpath:position"]
+      ],
+      "value": "200"
+    }, {
+      "id": "298d76c4-d29b-4094-9a7f-fd7cbb7beded",
+      "comment": "",
+      "command": "click",
+      "target": "id=calc",
+      "targets": [
+        ["id=calc", "id"],
+        ["name=calc", "name"],
+        ["css=#calc", "css:finder"],
+        ["xpath=//input[@id='calc']", "xpath:attributes"],
+        ["xpath=//div[@id='calc_form']/div/div/div[2]/div[3]/div[2]/ul/li/input", "xpath:idRelative"],
+        ["xpath=//li/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6acc3282-77ce-4f90-87f9-2bfa6cdc07bb",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=.T_overweight > td:nth-child(2)",
+      "targets": [
+        ["css=.T_overweight > td:nth-child(2)", "css:finder"],
+        ["xpath=//table[@id='bmi_table']/tbody/tr[4]/td[2]", "xpath:idRelative"],
+        ["xpath=//tr[4]/td[2]", "xpath:position"],
+        ["xpath=//td[contains(.,'Overweight')]", "xpath:innerText"]
+      ],
+      "value": "Overweight"
+    }, {
+      "id": "d7a37e75-72e9-46fc-80f7-32bdaf5741e7",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=#overweight .bmiNum",
+      "targets": [
+        ["css=#overweight .bmiNum", "css:finder"],
+        ["xpath=//div[@id='overweight']/p[4]/strong", "xpath:idRelative"],
+        ["xpath=//div[4]/p[4]/strong", "xpath:position"]
+      ],
+      "value": "28.7"
+    }]
+  }],
+  "suites": [{
+    "id": "37ccfbdc-c927-471d-a8ac-c70e1105a472",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["247979b1-96e0-44a9-b1d1-4451d8d89014"]
+  }],
+  "urls": ["https://www.cdc.gov/"],
+  "plugins": []
+}
