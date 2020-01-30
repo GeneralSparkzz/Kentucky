@@ -1,14 +1,13 @@
 package Selenium;
 
 import com.sun.deploy.cache.Cache;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 
 public class dataPullTesting {
 
@@ -16,22 +15,41 @@ public class dataPullTesting {
 
     public static void main(String[] args) throws IOException {
         Start();
-        System.out.println("Programming Enterprise Applications - Kentucky Team");
+        displayWebsiteInfo();
         // End();
     }
 
-    /**
-     * Ends the program by taking a screenshot of the last second the driver was running with.
-     * (Especially useful with testing code when using the headless driver version)
-     *
-     * @throws IOException
-     */
-    public static void End() throws IOException {
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        // BE SURE TO CHANGE FILE PATH OF SCREENSHOT BEFORE RUNNING
-        Cache.copyFile(screenshot, new File
-                ("C:\\Users\\cobyf\\Desktop\\Kentucky\\Kentucky IntelliJ\\Other Docs"));
-        driver.quit();
+    public static void displayWebsiteInfo() {
+        driver.get("https://li-public.fmcsa.dot.gov/LIVIEW/pkg_oos_process.prc_list?pv_vpath=LIVIEW&" +
+                "pv_show_all=N&pn_dotno=&pn_docket=&pv_legalname=&s_state=KYUS");
+        System.out.println("Title: " + driver.getTitle() + "\n");
+        for(int x = 2; x <= 10; x++)
+        {
+            WebElement usdot = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/th/center/font"));
+            WebElement names = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[1]/center"));
+            WebElement address = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[2]/center"));
+            WebElement oosReason = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[3]/center/font"));
+            WebElement oosDate = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[4]/center/font"));
+            WebElement status = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[5]/center/font"));
+
+            String newNames = names.getText().trim().replace("\n", ", ");
+
+            String newAddress = address.getText().trim();
+            newAddress = newAddress.replace("\n", ", "
+                                  ).replace(" ,", ","
+                                  ).replace("KY", "KY,");
+
+            String newDate = oosDate.getText().trim();
+            String[] dateInfo = newDate.split("-");
+            newDate = dateInfo[2] + "-" + dateInfo[0] + "-" + dateInfo[1];
+
+            System.out.println("USDOT#: " + usdot.getText().trim());
+            System.out.println("LEGAL NAME, DBA NAME: " + newNames);
+            System.out.println("ADDRESS: " + newAddress);
+            System.out.println("OOS REASON: " + oosReason.getText());
+            System.out.println("OOS DATE: " + newDate);
+            System.out.println("STATUS: " + status.getText() + "\n");
+        }
     }
 
     /**
