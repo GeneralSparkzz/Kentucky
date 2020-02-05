@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
+import java.util.List;
 
 public class dataPullTesting {
 
@@ -15,15 +16,15 @@ public class dataPullTesting {
 
     public static void main(String[] args) throws IOException {
         Start();
-        displayWebsiteInfo();
+        // displayWebsiteInfo();
         // End();
     }
 
     public static void displayWebsiteInfo() {
         driver.get("https://li-public.fmcsa.dot.gov/LIVIEW/pkg_oos_process.prc_list?pv_vpath=LIVIEW&" +
                 "pv_show_all=N&pn_dotno=&pn_docket=&pv_legalname=&s_state=KYUS");
-        System.out.println("Title: " + driver.getTitle() + "\n");
-        for(int x = 2; x <= 10; x++)
+        List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
+        for(int x = 2; x <= rows.size(); x++)
         {
             WebElement usdot = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/th/center/font"));
             WebElement names = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[1]/center"));
@@ -56,7 +57,7 @@ public class dataPullTesting {
      * Begins the program by creating a new Headless Chrome driver.
      */
     public static void Start() {
-        System.setProperty("webdriver.chrome.driver", "D:\\College\\~JAR Files\\Selenium Files\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "E:\\College\\!JAR Files\\Selenium Files\\ChromeDriver GamingLaptop\\chromedriver.exe");
         // THESE OPTIONS MAKE IT HEADLESS
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
