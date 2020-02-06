@@ -1,5 +1,3 @@
-package Selenium;
-
 import com.sun.deploy.cache.Cache;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +9,7 @@ import java.text.DateFormat;
 import java.util.List;
 import java.util.Scanner;
 
-public class dataPullTesting {
+public class WebScraper {
 
     static String usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip;
     static int nlocation, commalocation, lastspace;
@@ -101,8 +99,8 @@ public class dataPullTesting {
 
             String newAddress = address.getText().trim();
             newAddress = newAddress.replace("\n", ", "
-                                  ).replace(" ,", ","
-                                  ).replace("KY", "KY,");
+            ).replace(" ,", ","
+            ).replace("KY", "KY,");
 
             String newDate = oosDate.getText().trim();
             String[] dateInfo = newDate.split("-");
