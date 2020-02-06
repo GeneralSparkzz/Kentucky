@@ -17,6 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Selenium JAR Files" level="project" />
+    <orderEntry type="library" name="JAR Files" level="project" />
   </component>
 </module>
