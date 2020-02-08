@@ -11,19 +11,35 @@ import java.util.Scanner;
 
 public class WebScraper {
 
-    static String usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip;
-    static int nlocation, commalocation, lastspace;
+    static String usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip, insertSQL;
+    static int nlocation, commalocation, lastspace, rowCounter = 0;
     static WebDriver driver;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, SQLException {
         Start();
         insertIntoDatabase();
     }
 
-    public static void insertIntoDatabase() throws IOException {
+    public static void insertIntoDatabase() throws IOException, SQLException {
+        String hostName = "ptcwork.database.windows.net";
+        String database = "ChameleonCompanies";
+        String user;
+        String password;
+        File file = new File("C:\\Users\\cobyf\\Desktop\\Kentucky.txt");
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String unseparated = br.readLine();
+        br.close();
+        user = unseparated.substring(0, unseparated.indexOf(","));
+        password = unseparated.substring(unseparated.indexOf(",") + 1);
+        String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
+                + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, database, user, password);
+        Connection connection = DriverManager.getConnection(url);
+        Statement statement = connection.createStatement();
+
         driver.get("https://li-public.fmcsa.dot.gov/LIVIEW/pkg_oos_process.prc_list?pv_vpath=LIVIEW&" +
                 "pv_show_all=N&pn_dotno=&pn_docket=&pv_legalname=&s_state=KYUS");
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
+
         for(int x = 2; x <= rows.size(); x++) {
             usdot = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/th/center/font")).getText().trim();
             names = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[1]/center")).getText().trim();
@@ -33,8 +49,7 @@ public class WebScraper {
             status = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[5]/center/font")).getText().trim();
 
             String[] dateInfo = date.split("-");
-            newDate = dateInfo[2] + "-" + dateInfo[0] + "-" + dateInfo[1];
-
+            newDate = dateInfo[2] + "/" + dateInfo[0] + "/" + dateInfo[1];
             if(names.contains("\n")) {
                 legalName = names.substring(0, names.indexOf("\n"));
                 dbName = names.substring(names.indexOf("\n") + 1);
@@ -43,7 +58,6 @@ public class WebScraper {
                 dbName = "";
             }
             // System.out.println("Legal Name: " + legalName + "\nDBA Name: " + dbName);
-
             nlocation = address.indexOf("\n");
             commalocation = address.indexOf(",");
             lastspace = address.lastIndexOf(" ");
@@ -53,33 +67,19 @@ public class WebScraper {
             zip = address.substring(lastspace + 1);
             // System.out.println("Street: " + street + "\nCity: " + city + "\nState: " + state + "\nZIP: " + zip + "\n");
 
-//            String hostName = "ptcwork.database.windows.net";
-//            String database = "ChameleonCompanies";
-//            String user = "";
-//            String password = "";
-//            File file = new File("C:\\Users\\cobyf\\Desktop\\Kentucky.txt");
-//            BufferedReader br = new BufferedReader(new FileReader(file));
-//            String unseparated = br.readLine();
-//            br.close();
-//            user = unseparated.substring(0, unseparated.indexOf(","));
-//            password = unseparated.substring(unseparated.indexOf(",") + 1);
-//            String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
-//                    + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, database, user, password);
-//            Connection connection = null;
-//            try {
-//                connection = DriverManager.getConnection(url);
-//                String selectSql = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
-//                        usdot, legalName, dbName, street, city, state, zip, reason, date, status);
-//                Statement statement = connection.createStatement();
-//                ResultSet resultSet = statement.executeQuery(selectSql);
-//                while(resultSet.next())
-//                    System.out.println("co.USDOTNum: " + resultSet.getString("USDOTNum"));
-//                connection.close();
-//            }
-//            catch (Exception e) {
-//                System.out.println("Exception: " + e);
-//            }
+            try {
+                insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
+                        usdot, legalName, dbName, street, city, state, zip, reason, newDate, status);
+                // System.out.println(insertSQL + " would be inserted.");
+                statement.executeQuery(insertSQL);
+                connection.close();
+            }
+            catch (Exception e) {
+                System.out.println("Exception: " + e);
+            }
+            rowCounter++;
         }
+        System.out.println("\n\nDatabase Insertions complete!\n" + rowCounter + " rows inserted.");
     }
 
     public static void displayWebsiteInfo() {
