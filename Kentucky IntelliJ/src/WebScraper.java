@@ -70,11 +70,12 @@ public class WebScraper {
             try {
                 insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
                         usdot, legalName, dbName, street, city, state, zip, reason, newDate, status);
-                // System.out.println(insertSQL + " would be inserted.");
                 statement.executeQuery(insertSQL);
+                System.out.println(insertSQL + " was inserted.");
                 connection.close();
             }
             catch (Exception e) {
+                System.out.println(insertSQL + " was not inserted.");
                 System.out.println("Exception: " + e);
             }
             rowCounter++;
@@ -116,7 +117,7 @@ public class WebScraper {
     }
 
     public static void Start() {
-        System.setProperty("webdriver.chrome.driver", "E:\\College\\!JAR Files\\Selenium Files\\ChromeDriver GamingLaptop\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\College\\!JAR Files\\Selenium Files\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("window-size=1920x1080");
