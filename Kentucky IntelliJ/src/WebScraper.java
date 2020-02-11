@@ -19,7 +19,7 @@ public class WebScraper {
     }
 
     public static void insertIntoDatabase() throws IOException, SQLException {
-        File file = new File("C:\\Users\\cobyf\\Desktop\\Kentucky.txt");
+        File file = new File("C:\\Users\\cobyf\\Desktop\\Secret Files\\Kentucky.txt");
         BufferedReader br = new BufferedReader(new FileReader(file));
         unseparated = br.readLine();
         br.close();
@@ -93,7 +93,7 @@ public class WebScraper {
     }
 
     public static void Start() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\cobyf\\Desktop\\cdriver78.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\cobyf\\Desktop\\Secret Files\\cdriver78.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("window-size=1920x1080");
