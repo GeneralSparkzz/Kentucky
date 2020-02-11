@@ -93,7 +93,7 @@ public class WebScraper {
     }
 
     public static void Start() {
-        System.setProperty("webdriver.chrome.driver", "E:\\College\\!JAR Files\\Selenium Files\\ChromeDriver GamingLaptop\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\cobyf\\Desktop\\cdriver78.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("window-size=1920x1080");
