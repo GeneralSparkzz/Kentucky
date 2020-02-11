@@ -1,39 +1,35 @@
-import com.sun.deploy.cache.Cache;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.*;
+import java.net.URL;
 import java.sql.*;
-import java.text.DateFormat;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Scanner;
+import java.util.Map;
 
 public class WebScraper {
 
-    static String unseparated, usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip,
-            insertSQL, hostName, database, user, password;
+    static String unseparated, key, usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip,
+            insertSQL, hostName, database, user, password, apiAddress, apiResponse, coordinates;
     static int linelocation, percentlocation, hashtaglocation, nlocation, commalocation, lastspace, rowCounter = 0;
+    static double lat, lng;
+    static File dbInfoFile, keyFile;
+    static BufferedReader br;
+    static URL url;
     static WebDriver driver;
+    static ObjectMapper mapper = new ObjectMapper();
+    static Map<String, Object> tempMap = new HashMap<>();
 
     public static void main(String[] args) throws IOException, SQLException {
         Start();
+        PullLocalInfo();
         insertIntoDatabase();
     }
 
-    public static void insertIntoDatabase() throws IOException, SQLException {
-        File file = new File("C:\\Users\\cobyf\\Desktop\\Kentucky.txt");
-        BufferedReader br = new BufferedReader(new FileReader(file));
-        unseparated = br.readLine();
-        br.close();
-        linelocation = unseparated.indexOf("|");
-        percentlocation = unseparated.indexOf("%");
-        hashtaglocation = unseparated.indexOf("#");
-        hostName = unseparated.substring(0, linelocation);
-        database = unseparated.substring(linelocation + 1, percentlocation);
-        user = unseparated.substring(percentlocation + 1, hashtaglocation);
-        password = unseparated.substring(hashtaglocation + 1);
-
+    public static void insertIntoDatabase() throws SQLException, IOException {
         String url = String.format("jdbc:sqlserver://%s:1433;database=%s;user=%s;password=%s;encrypt=true;"
                 + "hostNameInCertificate=*.database.windows.net;loginTimeout=30;", hostName, database, user, password);
         Connection connection = DriverManager.getConnection(url);
@@ -44,6 +40,7 @@ public class WebScraper {
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
 
         for(int x = 2; x <= rows.size(); x++) {
+        // for(int x = 2; x <= 10; x++) {
             usdot = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/th/center/font")).getText().trim();
             names = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[1]/center")).getText().trim();
             address = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[2]/center")).getText().trim();
@@ -63,9 +60,12 @@ public class WebScraper {
                 dbName = "";
             }
             if(names.contains("'") || address.contains("'")) {
-                legalName = legalName.replaceAll("'", "");
-                dbName = dbName.replaceAll("'", "");
-                address = address.replaceAll("'", "");
+                if(names.contains("'")) {
+                    legalName = legalName.replaceAll("'", "");
+                    dbName = dbName.replaceAll("'", "");
+                } else {
+                    address = address.replaceAll("'", "");
+                }
             }
             // System.out.println("Legal Name: " + legalName + "\nDBA Name: " + dbName);
 
@@ -78,11 +78,13 @@ public class WebScraper {
             zip = address.substring(lastspace + 1);
             // System.out.println("Street: " + street + "\nCity: " + city + "\nState: " + state + "\nZIP: " + zip + "\n");
 
+            getGeocodedLocation();
+
             try {
                 insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
                         usdot, legalName, dbName, street, city, state, zip, reason, newDate, status);
                 statement.executeUpdate(insertSQL);
-                System.out.println(insertSQL + " was inserted.");
+                System.out.println(insertSQL.substring(insertSQL.indexOf("'")) + " was inserted.");
                 rowCounter++;
             }
             catch (Exception ex) {
@@ -91,12 +93,46 @@ public class WebScraper {
             }
         }
 
-        System.out.println("\n\nDatabase Insertions complete!\n" + rowCounter + " rows inserted.");
+//        System.out.println("\n\nDatabase Insertions complete!\n" + rowCounter + " rows inserted.");
         connection.close();
     }
 
+    public static void getGeocodedLocation() throws IOException {
+        apiAddress = address.replaceAll(" ", "+").replaceAll("'", "");
+        apiAddress = apiAddress.substring(0, apiAddress.indexOf("\n"));
+        city = "+" + city.replaceAll(" ", "+");
+        url = new URL(String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s,%s,+%s&key=%s",
+                apiAddress, city, state, key));
+        // System.out.println("Google API Link: " + url);
+        tempMap = mapper.readValue(url, Map.class);
+        apiResponse = tempMap.toString();
+        // System.out.println(apiResponse);
+        coordinates = apiResponse.substring(apiResponse.indexOf("location={") + 10, apiResponse.indexOf("}, location_type"));
+        // System.out.println(coordinates);
+        lat = Double.parseDouble(coordinates.substring(coordinates.indexOf("=") + 1, coordinates.indexOf(",")));
+        lng = Double.parseDouble(coordinates.substring(coordinates.lastIndexOf("=") + 1));
+        // System.out.println("Lat: " + lat + "\nLong: " + lng);
+    }
+
+    public static void PullLocalInfo() throws IOException {
+        dbInfoFile = new File("C:\\Users\\cobyf\\Desktop\\Secret Files\\Kentucky.txt");
+        keyFile = new File("C:\\Users\\cobyf\\Desktop\\Secret Files\\API Key.txt");
+        br = new BufferedReader(new FileReader(dbInfoFile));
+        unseparated = br.readLine();
+        linelocation = unseparated.indexOf("|");
+        percentlocation = unseparated.indexOf("%");
+        hashtaglocation = unseparated.indexOf("#");
+        hostName = unseparated.substring(0, linelocation);
+        database = unseparated.substring(linelocation + 1, percentlocation);
+        user = unseparated.substring(percentlocation + 1, hashtaglocation);
+        password = unseparated.substring(hashtaglocation + 1);
+        br = new BufferedReader(new FileReader(keyFile));
+        key = br.readLine();
+        br.close();
+    }
+
     public static void Start() {
-        System.setProperty("webdriver.chrome.driver", "E:\\College\\!JAR Files\\Selenium Files\\ChromeDriver GamingLaptop\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\cobyf\\Desktop\\Secret Files\\cdriver80.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("window-size=1920x1080");
