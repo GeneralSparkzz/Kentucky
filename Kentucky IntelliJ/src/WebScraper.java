@@ -4,7 +4,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.*;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.*;
 import java.util.HashMap;
@@ -14,8 +13,9 @@ import java.util.Map;
 public class WebScraper {
 
     static String unseparated, key, usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip,
-            insertSQL, hostName, database, user, password, apiAddress, apiResponse, geometry, location;
+            insertSQL, hostName, database, user, password, apiAddress, apiResponse, coordinates;
     static int linelocation, percentlocation, hashtaglocation, nlocation, commalocation, lastspace, rowCounter = 0;
+    static double lat, lng;
     static File dbInfoFile, keyFile;
     static BufferedReader br;
     static URL url;
@@ -39,8 +39,8 @@ public class WebScraper {
                 "pv_show_all=N&pn_dotno=&pn_docket=&pv_legalname=&s_state=KYUS");
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
 
-        // for(int x = 2; x <= rows.size(); x++) {
-        for(int x = 2; x <= 10; x++) {
+        for(int x = 2; x <= rows.size(); x++) {
+        // for(int x = 2; x <= 10; x++) {
             usdot = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/th/center/font")).getText().trim();
             names = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[1]/center")).getText().trim();
             address = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[2]/center")).getText().trim();
@@ -80,17 +80,17 @@ public class WebScraper {
 
             getGeocodedLocation();
 
-//            try {
-//                insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
-//                        usdot, legalName, dbName, street, city, state, zip, reason, newDate, status);
-//                statement.executeUpdate(insertSQL);
-//                System.out.println(insertSQL + " was inserted.");
-//                rowCounter++;
-//            }
-//            catch (Exception ex) {
-//                System.out.println("Annoyance: " + ex);
-//                System.out.println(insertSQL + " was not inserted.");
-//            }
+            try {
+                insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
+                        usdot, legalName, dbName, street, city, state, zip, reason, newDate, status);
+                statement.executeUpdate(insertSQL);
+                System.out.println(insertSQL.substring(insertSQL.indexOf("'")) + " was inserted.");
+                rowCounter++;
+            }
+            catch (Exception ex) {
+                System.out.println("Annoyance: " + ex);
+                System.out.println(insertSQL + " was not inserted.");
+            }
         }
 
 //        System.out.println("\n\nDatabase Insertions complete!\n" + rowCounter + " rows inserted.");
@@ -103,12 +103,15 @@ public class WebScraper {
         city = "+" + city.replaceAll(" ", "+");
         url = new URL(String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s,%s,+%s&key=%s",
                 apiAddress, city, state, key));
-        System.out.println("Google API Link: " + url);
+        // System.out.println("Google API Link: " + url);
         tempMap = mapper.readValue(url, Map.class);
         apiResponse = tempMap.toString();
-        System.out.println(apiResponse);
-        geometry = apiResponse.substring(apiResponse.indexOf("location={") + 10, apiResponse.indexOf("}, location_type"));
-        System.out.println(geometry);
+        // System.out.println(apiResponse);
+        coordinates = apiResponse.substring(apiResponse.indexOf("location={") + 10, apiResponse.indexOf("}, location_type"));
+        // System.out.println(coordinates);
+        lat = Double.parseDouble(coordinates.substring(coordinates.indexOf("=") + 1, coordinates.indexOf(",")));
+        lng = Double.parseDouble(coordinates.substring(coordinates.lastIndexOf("=") + 1));
+        // System.out.println("Lat: " + lat + "\nLong: " + lng);
     }
 
     public static void PullLocalInfo() throws IOException {
@@ -129,7 +132,7 @@ public class WebScraper {
     }
 
     public static void Start() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\cobyf\\Desktop\\Secret Files\\cdriver78.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\cobyf\\Desktop\\Secret Files\\cdriver80.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("window-size=1920x1080");
