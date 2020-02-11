@@ -1,13 +1,10 @@
-import com.sun.deploy.cache.Cache;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.io.*;
 import java.sql.*;
-import java.text.DateFormat;
 import java.util.List;
-import java.util.Scanner;
 
 public class WebScraper {
 
