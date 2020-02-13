@@ -13,7 +13,7 @@ import java.util.Map;
 public class WebScraper {
 
     static String unseparated, key, usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip,
-            insertSQL, hostName, database, user, password, apiAddress, apiResponse, coordinates;
+            insertSQL, hostName, database, user, password, apiAddress, apiResponse, coordinates, newCity;
     static int linelocation, percentlocation, hashtaglocation, nlocation, commalocation, lastspace, rowCounter = 0;
     static double lat, lng;
     static File dbInfoFile, keyFile;
@@ -40,7 +40,7 @@ public class WebScraper {
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
 
         // for(int x = 2; x <= rows.size(); x++) {
-        for(int x = 2; x <= 10; x++) {
+        for(int x = 2; x <= 11; x++) {
             usdot = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/th/center/font")).getText().trim();
             names = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[1]/center")).getText().trim();
             address = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[2]/center")).getText().trim();
@@ -60,12 +60,9 @@ public class WebScraper {
                 dbName = "";
             }
             if(names.contains("'") || address.contains("'")) {
-                if(names.contains("'")) {
-                    legalName = legalName.replaceAll("'", "");
-                    dbName = dbName.replaceAll("'", "");
-                } else {
-                    address = address.replaceAll("'", "");
-                }
+                legalName = legalName.replaceAll("'", "");
+                dbName = dbName.replaceAll("'", "");
+                address = address.replaceAll("'", "");
             }
             // System.out.println("Legal Name: " + legalName + "\nDBA Name: " + dbName);
 
@@ -81,10 +78,11 @@ public class WebScraper {
             getGeocodedLocation();
 
             try {
-                insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
-                        usdot, legalName, dbName, street, city, state, zip, reason, newDate, status);
+                insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
+                        usdot, legalName, dbName, street, city, state, zip, reason, newDate, status, lat, lng);
                 statement.executeUpdate(insertSQL);
                 System.out.println(insertSQL.substring(insertSQL.indexOf("'")) + " was inserted.");
+                System.out.println("Lat: " + lat + "\nLong: " + lng);
                 rowCounter++;
             }
             catch (Exception ex) {
@@ -93,16 +91,16 @@ public class WebScraper {
             }
         }
 
-//        System.out.println("\n\nDatabase Insertions complete!\n" + rowCounter + " rows inserted.");
+        System.out.println("\n\nDatabase Insertions complete!\n" + rowCounter + " rows inserted.");
         connection.close();
     }
 
     public static void getGeocodedLocation() throws IOException {
         apiAddress = address.replaceAll(" ", "+").replaceAll("'", "");
         apiAddress = apiAddress.substring(0, apiAddress.indexOf("\n"));
-        city = "+" + city.replaceAll(" ", "+");
+        newCity = "+" + city.replaceAll(" ", "+");
         url = new URL(String.format("https://maps.googleapis.com/maps/api/geocode/json?address=%s,%s,+%s&key=%s",
-                apiAddress, city, state, key));
+                apiAddress, newCity, state, key));
         // System.out.println("Google API Link: " + url);
         tempMap = mapper.readValue(url, Map.class);
         apiResponse = tempMap.toString();
@@ -111,7 +109,6 @@ public class WebScraper {
         // System.out.println(coordinates);
         lat = Double.parseDouble(coordinates.substring(coordinates.indexOf("=") + 1, coordinates.indexOf(",")));
         lng = Double.parseDouble(coordinates.substring(coordinates.lastIndexOf("=") + 1));
-        // System.out.println("Lat: " + lat + "\nLong: " + lng);
     }
 
     public static void PullLocalInfo() throws IOException {
