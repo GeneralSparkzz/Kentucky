@@ -39,8 +39,8 @@ public class WebScraper {
                 "pv_show_all=N&pn_dotno=&pn_docket=&pv_legalname=&s_state=KYUS");
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
 
-        for(int x = 2; x <= rows.size(); x++) {
-        // for(int x = 2; x <= 10; x++) {
+        // for(int x = 2; x <= rows.size(); x++) {
+        for(int x = 2; x <= 10; x++) {
             usdot = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/th/center/font")).getText().trim();
             names = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[1]/center")).getText().trim();
             address = driver.findElement(By.xpath("/html/body/font/table[2]/tbody/tr[" + x + "]/td[2]/center")).getText().trim();
