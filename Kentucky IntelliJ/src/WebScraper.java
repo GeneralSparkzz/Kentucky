@@ -35,8 +35,7 @@ public class WebScraper {
         Connection connection = DriverManager.getConnection(url);
         Statement statement = connection.createStatement();
 
-        driver.get("https://li-public.fmcsa.dot.gov/LIVIEW/pkg_oos_process.prc_list?pv_vpath=LIVIEW&" +
-                "pv_show_all=N&pn_dotno=&pn_docket=&pv_legalname=&s_state=KYUS");
+        driver.get("C:\\Users\\cobyf\\Desktop\\Kentucky\\OOSO Website\\OOSO Website.html");
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
 
         // for(int x = 2; x <= rows.size(); x++) {
@@ -80,7 +79,7 @@ public class WebScraper {
             try {
                 insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
                         usdot, legalName, dbName, street, city, state, zip, reason, newDate, status, lat, lng);
-                statement.executeUpdate(insertSQL);
+                //statement.executeUpdate(insertSQL);
                 System.out.println(insertSQL.substring(insertSQL.indexOf("'")) + " was inserted.");
                 System.out.println("Lat: " + lat + "\nLong: " + lng);
                 rowCounter++;
