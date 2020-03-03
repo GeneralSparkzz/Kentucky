@@ -14,7 +14,7 @@ public class WebScraper {
 
     static String unseparated, key, usdot, names, address, reason, date, status, newDate, legalName, dbName, street, city, state, zip,
             insertSQL, hostName, database, user, password, apiAddress, apiResponse, coordinates, newCity;
-    static int linelocation, percentlocation, hashtaglocation, nlocation, commalocation, lastspace, rowCounter = 0;
+    static int linelocation, percentlocation, hashtaglocation, nlocation, commalocation, lastspace, rowCounter = 0, probCounter = 0;
     static double lat, lng;
     static File dbInfoFile, keyFile;
     static BufferedReader br;
@@ -35,7 +35,8 @@ public class WebScraper {
         Connection connection = DriverManager.getConnection(url);
         Statement statement = connection.createStatement();
 
-        driver.get("C:\\Users\\cobyf\\Desktop\\Kentucky\\OOSO Website\\OOSO Website.html");
+        driver.get("https://li-public.fmcsa.dot.gov/LIVIEW/pkg_oos_process.prc_list?" +
+                "pv_vpath=LIVIEW&pv_show_all=N&pn_dotno=&pn_docket=&pv_legalname=&s_state=KYUS");
         List<WebElement> rows = driver.findElements(By.xpath("/html/body/font/table[2]/tbody/tr"));
 
         // for(int x = 2; x <= rows.size(); x++) {
@@ -74,14 +75,13 @@ public class WebScraper {
             zip = address.substring(lastspace + 1);
             // System.out.println("Street: " + street + "\nCity: " + city + "\nState: " + state + "\nZIP: " + zip + "\n");
 
-            getGeocodedLocation();
-
             try {
+                getGeocodedLocation();
                 insertSQL = String.format("exec SP_Add_Inactive '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s';",
                         usdot, legalName, dbName, street, city, state, zip, reason, newDate, status, lat, lng);
-                //statement.executeUpdate(insertSQL);
-                System.out.println(insertSQL.substring(insertSQL.indexOf("'")) + " was inserted.");
-                System.out.println("Lat: " + lat + "\nLong: " + lng);
+                statement.executeUpdate(insertSQL);
+                System.out.println(insertSQL.substring(insertSQL.indexOf("'")) + " was inserted." + "\n");
+                // System.out.println("Lat: " + lat + "\nLong: " + lng + "\n");
                 rowCounter++;
             }
             catch (Exception ex) {
@@ -91,6 +91,7 @@ public class WebScraper {
         }
 
         System.out.println("\n\nDatabase Insertions complete!\n" + rowCounter + " rows inserted.");
+        System.out.println(probCounter + " rows with insertion errors.");
         connection.close();
     }
 
@@ -104,15 +105,22 @@ public class WebScraper {
         tempMap = mapper.readValue(url, Map.class);
         apiResponse = tempMap.toString();
         // System.out.println(apiResponse);
-        coordinates = apiResponse.substring(apiResponse.indexOf("location={") + 10, apiResponse.indexOf("}, location_type"));
-        // System.out.println(coordinates);
-        lat = Double.parseDouble(coordinates.substring(coordinates.indexOf("=") + 1, coordinates.indexOf(",")));
-        lng = Double.parseDouble(coordinates.substring(coordinates.lastIndexOf("=") + 1));
+        try {
+            coordinates = apiResponse.substring(apiResponse.indexOf("location={") + 10, apiResponse.indexOf("}, location_type"));
+            // System.out.println(coordinates);
+            lat = Double.parseDouble(coordinates.substring(coordinates.indexOf("=") + 1, coordinates.indexOf(",")));
+            lng = Double.parseDouble(coordinates.substring(coordinates.lastIndexOf("=") + 1));
+        }
+        catch(Exception ex) {
+            System.out.println("Invalid Address. Defaulting values.\nURL: " + url);
+            lat = 0.00;
+            lng = 0.00;
+        }
     }
 
     public static void PullLocalInfo() throws IOException {
-        dbInfoFile = new File("C:\\Users\\cobyf\\Desktop\\Secret Files\\Kentucky.txt");
-        keyFile = new File("C:\\Users\\cobyf\\Desktop\\Secret Files\\API Key.txt");
+        dbInfoFile = new File("C:\\Users\\Coby\\Desktop\\Secret Files\\Kentucky.txt");
+        keyFile = new File("C:\\Users\\Coby\\Desktop\\Secret Files\\API Key.txt");
         br = new BufferedReader(new FileReader(dbInfoFile));
         unseparated = br.readLine();
         linelocation = unseparated.indexOf("|");
@@ -128,7 +136,7 @@ public class WebScraper {
     }
 
     public static void Start() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\cobyf\\Desktop\\Secret Files\\cdriver78.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Coby\\Desktop\\Secret Files\\cdriver80.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         options.addArguments("window-size=1920x1080");
